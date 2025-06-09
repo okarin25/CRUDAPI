@@ -1,0 +1,121 @@
+API Documentation
+
+Product API
+
+Endpoints
+
+POST /api/product/createProduct: Create a new product
+Request Body:
+name: string (required)
+description: string (required)
+price: number (required)
+category: string (required)
+stock: number (required)
+Response:
+201 Created: Product created successfully
+500 Internal Server Error: Error creating product
+GET /api/product/getAllProducts: Get all products
+Response:
+200 OK: Products fetched successfully
+404 Not Found: No products found
+500 Internal Server Error: Error fetching products
+GET /api/product/getProductById/:id: Get a product by ID
+Path Parameters:
+id: string (required)
+Response:
+200 OK: Product fetched successfully
+404 Not Found: Product not found
+500 Internal Server Error: Error fetching product
+DELETE /api/product/deleteProductById/:id: Delete a product by ID
+Path Parameters:
+id: string (required)
+Response:
+200 OK: Product deleted successfully
+404 Not Found: Product not found
+500 Internal Server Error: Error deleting product
+Testing the API
+
+You can test the API using a tool like Postman or cURL. Here are some sample requests:
+
+Create Product
+
+Method: POST
+URL: http://localhost:5000/api/product/createProduct
+Request Body:
+json
+CopyInsert
+{
+  "name": "Test Product",
+  "description": "This is a test product",
+  "price": 10.99,
+  "category": "Test Category",
+  "stock": 10
+}
+Expected Response:
+json
+CopyInsert
+{
+  "message": "Product created successfully",
+  "product": {
+    "_id": "61d9c9f9f9f9f9f9f9f9f9",
+    "name": "Test Product",
+    "description": "This is a test product",
+    "price": 10.99,
+    "category": "Test Category",
+    "stock": 10,
+    "createdAt": "2023-02-20T14:30:00.000Z",
+    "updatedAt": "2023-02-20T14:30:00.000Z"
+  }
+}
+Get All Products
+
+Method: GET
+URL: http://localhost:5000/api/product/getAllProducts
+Expected Response:
+json
+CopyInsert
+{
+  "message": "Products fetched successfully",
+  "products": [
+    {
+      "_id": "61d9c9f9f9f9f9f9f9f9f9",
+      "name": "Test Product",
+      "description": "This is a test product",
+      "price": 10.99,
+      "category": "Test Category",
+      "stock": 10,
+      "createdAt": "2023-02-20T14:30:00.000Z",
+      "updatedAt": "2023-02-20T14:30:00.000Z"
+    }
+  ]
+}
+Get Product by ID
+
+Method: GET
+URL: http://localhost:5000/api/product/getProductById/61d9c9f9f9f9f9f9f9f9f9
+Expected Response:
+json
+CopyInsert
+{
+  "message": "Product fetched successfully",
+  "product": {
+    "_id": "61d9c9f9f9f9f9f9f9f9f9",
+    "name": "Test Product",
+    "description": "This is a test product",
+    "price": 10.99,
+    "category": "Test Category",
+    "stock": 10,
+    "createdAt": "2023-02-20T14:30:00.000Z",
+    "updatedAt": "2023-02-20T14:30:00.000Z"
+  }
+}
+Delete Product by ID
+
+Method: DELETE
+URL: http://localhost:5000/api/product/deleteProductById/61d9c9f9f9f9f9f9f9f9f9
+Expected Response:
+json
+CopyInsert
+{
+  "message": "Product deleted successfully"
+}
